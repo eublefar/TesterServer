@@ -6,25 +6,32 @@
 
 #include <mutex>
 
-class Measurer : QObject
+enum Status
+{
+    NOT_CONNECTED,
+    WAITING,
+    LISTENING
+};
+
+class Measurer : public QObject
 {
     Q_OBJECT
 public:
-    Measurer(ServerIf *server, uint32_t msg_size = 15);
+    Measurer(ServerIf *server, int msg_size = 15);
     virtual ~Measurer() {}
     std::chrono::duration<double> getTotalTime();
     double getTotalTransfered();
     double getCurrentSpeed();
 
-    uint32_t getMsg_size() const;
+    int getMsg_size() const;
 
-    std::vector<char> getBuffer() const;
+    std::vector<char> getBuffer();
 
 signals:
-    void updateSpeed(const double speed);
-    void updateTotalTransfered(const double transfered);
-    void updateTotalTime(const std::chrono::duration<double> time);
-    void updateMsgSize(const uint32_t size);
+    void update_speed(const double speed);
+    void update_totalTransfered(const double transfered);
+    void update_totalTime(const std::chrono::duration<double> time);
+    void update_msgSize(const int size);
 
 private:
     void receiveHandlerSetSize(const boost::system::error_code& error, int b_received);
@@ -32,7 +39,7 @@ private:
     void sendHandlerMeasure(const boost::system::error_code& error, int b_sent);
 
     std::unique_ptr<ServerIf> server;
-    uint32_t msg_size_;
+    int msg_size_;
 
     std::mutex data_mutex;
         double total_transfered = 0;

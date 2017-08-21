@@ -12,8 +12,8 @@ class MeasurerFactory
 public:
     MeasurerFactory(IOServiceThreadCoordinator *ioCoordinator);
 
-    Measurer* getTcpMeasurer(uint32_t port);
-    Measurer* getUdpMeasurer(uint32_t port);
+    Measurer* getTcpMeasurer(int port);
+    Measurer* getUdpMeasurer(int port);
 private:
     IOServiceThreadCoordinator* ioCoordinator_;
 };

@@ -1,7 +1,7 @@
 #include "measurer.h"
 
 
-Measurer::Measurer(ServerIf *pServer, uint32_t pMsg_size):
+Measurer::Measurer(ServerIf *pServer, int pMsg_size):
     server(pServer),
     msg_size_(pMsg_size)
 {
@@ -19,11 +19,11 @@ void Measurer::receiveHandlerSetSize(const boost::system::error_code &error, int
         {
             int new_size = atoi(buffer.data()+5);
             msg_size_ = new_size;
-            emit updateMsgSize(msg_size_);
             buffer.resize(new_size, '\0');
             server->setOnReceive(std::bind(&Measurer::receiveHandlerMeasure,this,
                                             std::placeholders::_1, std::placeholders::_2));
             transfer_start = std::chrono::system_clock::now();
+            emit update_msgSize(msg_size_);
         }
         else
         {
@@ -45,9 +45,9 @@ void Measurer::receiveHandlerMeasure(const boost::system::error_code &error, uns
             total_transfered+=((double)b_received)/1000;
             total_time += transfer_time;
             current_speed = ((double)b_received)/(transfer_time.count()* 1000);
-            emit updateSpeed(current_speed);
-            emit updateTotalTransfered(total_transfered);
-            emit updateTotalTime(total_time);
+            emit update_speed(current_speed);
+            emit update_totalTransfered(total_transfered);
+            emit update_totalTime(total_time);
         data_mutex.unlock();
         transfer_start = std::chrono::system_clock::now();
     }
@@ -59,13 +59,13 @@ void Measurer::sendHandlerMeasure(const boost::system::error_code &error, int b_
 
 }
 
-std::vector<char> Measurer::getBuffer() const
+std::vector<char> Measurer::getBuffer()
 {
     std::lock_guard<std::mutex> guard(this->data_mutex);
     return buffer;
 }
 
-uint32_t Measurer::getMsg_size() const
+int Measurer::getMsg_size() const
 {
     return msg_size_;
 }

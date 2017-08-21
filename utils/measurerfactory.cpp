@@ -9,13 +9,13 @@ MeasurerFactory::MeasurerFactory(IOServiceThreadCoordinator *ioCoordinator):
 
 }
 
-Measurer* MeasurerFactory::getTcpMeasurer(uint32_t port)
+Measurer* MeasurerFactory::getTcpMeasurer(int port)
 {
     ServerIf* tcpServer = new TcpServer(ioCoordinator_->getIOService(), port);
     return new Measurer(tcpServer);
 }
 
-Measurer* MeasurerFactory::getUdpMeasurer(uint32_t port)
+Measurer* MeasurerFactory::getUdpMeasurer(int port)
 {
     ServerIf* udpServer = new UdpServer(ioCoordinator_->getIOService(), port);
     return new Measurer(udpServer);

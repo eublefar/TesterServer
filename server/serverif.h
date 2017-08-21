@@ -1,5 +1,6 @@
 #ifndef SERVERIF_H
 #define SERVERIF_H
+#include <QObject>
 
 #include <vector>
 #include <functional>
@@ -11,7 +12,6 @@ using handler_send_t = void(const boost::system::error_code& error, int);
 class ServerIf
 {
 public:
-
     virtual void setOnReceive (const std::function<handler_receive_t> &value) = 0;
     virtual void setOnSend(const std::function<handler_send_t> &value) = 0;
     virtual void send(std::vector<char> &buffer) = 0;

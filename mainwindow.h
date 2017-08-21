@@ -20,17 +20,17 @@ public:
 
 
 private slots:
-    void on_pushButton_clicked();
+    void on_listeningButton_clicked();
     //tcp UI update slots
-    void update_SpeedTcp(double speed);
-    void update_TransferedTcp(double bytes);
-    void update_TotalTimeTcp(const std::chrono::duration<double> time);
-    void update_PacketSizeTcp(double bytes);
+    void update_speedTcp(double speed);
+    void update_transferedTcp(double bytes);
+    void update_totalTimeTcp(const std::chrono::duration<double> time);
+    void update_packetSizeTcp(int bytes);
     //udp UI update slots
-    void update_SpeedUdp(double speed);
-    void update_TransferedUdp(double bytes);
-    void update_TotalTimeUdp(const std::chrono::duration<double> time);
-    void update_PacketSizeUdp(double bytes);
+    void update_speedUdp(double speed);
+    void update_transferedUdp(double bytes);
+    void update_totalTimeUdp(const std::chrono::duration<double> time);
+    void update_packetSizeUdp(int bytes);
 
 private:
     void stop_measure();

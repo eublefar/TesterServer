@@ -25,7 +25,7 @@
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_5">
+      <widget class="QLineEdit" name="timeEdit_tcp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -63,28 +63,28 @@
       </widget>
      </item>
      <item row="5" column="2">
-      <widget class="QLineEdit" name="lineEdit_12">
+      <widget class="QLineEdit" name="speedEdit_udp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="lineEdit_7">
+      <widget class="QLineEdit" name="packetSizeEdit_tcp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="2" column="2">
-      <widget class="QLineEdit" name="lineEdit_9">
+      <widget class="QLineEdit" name="totalEdit_udp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
       </widget>
      </item>
      <item row="3" column="2">
-      <widget class="QLineEdit" name="lineEdit_10">
+      <widget class="QLineEdit" name="timeEdit_udp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -105,7 +105,7 @@
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="lineEdit_6">
+      <widget class="QLineEdit" name="totalEdit_tcp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -147,7 +147,7 @@
       </widget>
      </item>
      <item row="5" column="1">
-      <widget class="QLineEdit" name="lineEdit_3">
+      <widget class="QLineEdit" name="speedEdit_tcp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -175,7 +175,7 @@
       </widget>
      </item>
      <item row="1" column="2">
-      <widget class="QLineEdit" name="lineEdit_8">
+      <widget class="QLineEdit" name="packetSizeEdit_udp">
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -209,14 +209,14 @@
       </widget>
      </item>
      <item row="8" column="1">
-      <widget class="QLabel" name="label_12">
+      <widget class="QLabel" name="statusLabel_tcp">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Not Connected&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>
      <item row="8" column="2">
-      <widget class="QLabel" name="label_13">
+      <widget class="QLabel" name="statusLabel_udp">
        <property name="text">
         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Not Connected&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
@@ -242,17 +242,17 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_15">
+      <widget class="QLineEdit" name="portEdit">
        <property name="inputMask">
         <string>9999</string>
        </property>
        <property name="text">
-        <string>7</string>
+        <string>7777</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="listeningButton">
        <property name="text">
         <string>Start Listening</string>
        </property>
